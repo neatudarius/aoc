@@ -28,7 +28,7 @@ struct Task {
 };
 
 int main() {
-    // TaskRunner<Task>::create()->set_stream("in", std::cin).solve();
+    TaskRunner<Task>::create()->set_stream("in", std::cin).solve();
     // TaskRunner<Task>::create()->set_stream("in", std::cin).set_stream("out", std::cout).solve();
     return 0;
 }

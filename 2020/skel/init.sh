@@ -5,5 +5,6 @@ mkdir -p "${DAY_DIR}"
 
 # C++ skel
 cd "${DAY_DIR}" || exit 1
-ln -s ../skel/Makefile .
-cp ../skel/skel.cpp skel.cpp
+ln -fs ../skel/Makefile .
+cp ../skel/skel.cpp aoc.cpp
+touch in out

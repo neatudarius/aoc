@@ -52,7 +52,7 @@ struct Task {
 
     void print(const auto& result) {
         // TODO: print results to STDOUT
-        std::cout << result.first << " " << result.second << "\n";
+        std::cout << result.first << "\n" << result.second << "\n";
     }
 };
 
