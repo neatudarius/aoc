@@ -1,6 +1,7 @@
 #include "task_runner.h"
 
 struct Task {
+    int n;
     std::vector<int> v;
 
     auto solve() {
@@ -12,18 +13,23 @@ struct Task {
         // TODO: read from STDIN
         int x;
         while (std::cin >> x) {
+            ++n;
             v.push_back(x);
         }
     }
 
-    int compute() {
+    std::pair<uint64_t, uint64_t> compute() {
         // TODO: computes results
-        return v.size();
+        return {
+            1ULL, // TODO: change me
+            1ULL, // TODO: change me
+        };
     }
 
     void print(const auto& result) {
         // TODO: print results to STDOUT
-        std::cout << result << "\n";
+        std::cout << result.first << "\n";
+        std::cout << result.second << "\n";
     }
 };
 

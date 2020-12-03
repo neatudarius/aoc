@@ -11,7 +11,6 @@ struct Task {
     }
 
     void read() {
-        // TODO: read from STDIN
         int x;
         while (std::cin >> x) {
             v.push_back(x);
@@ -19,8 +18,6 @@ struct Task {
     }
 
     std::pair<int, int> compute() {
-        // TODO: computes results
-
         auto solve2 = [](const auto& v) {
             auto sol = -1LL;
             for (auto i = 0u; i < v.size(); ++i) {
@@ -51,8 +48,8 @@ struct Task {
     }
 
     void print(const auto& result) {
-        // TODO: print results to STDOUT
-        std::cout << result.first << "\n" << result.second << "\n";
+        std::cout << result.first << "\n";
+        std::cout << result.second << "\n";
     }
 };
 

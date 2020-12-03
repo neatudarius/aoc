@@ -35,8 +35,8 @@ struct Task {
 
             lower--;
             upper--;
-            int first_occ = (lower < (int) password.size() && password[lower] == letter);
-            int last_occ = (upper < (int) password.size() && password[upper] == letter);
+            int first_occ = (lower < (int)password.size() && password[lower] == letter);
+            int last_occ = (upper < (int)password.size() && password[upper] == letter);
             if (first_occ ^ last_occ) {
                 ++cnt_policy2;
             }
@@ -45,7 +45,10 @@ struct Task {
         return {cnt_policy1, cnt_policy2};
     }
 
-    void print(const auto& result) { std::cout << result.first << "\n" << result.second << "\n"; }
+    void print(const auto& result) {
+        std::cout << result.first << "\n";
+        std::cout << result.second << "\n";
+    }
 };
 
 int main() {

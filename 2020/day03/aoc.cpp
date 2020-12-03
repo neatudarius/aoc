@@ -39,6 +39,7 @@ struct Task {
                 ++cnt;
             }
         }
+
         return cnt;
     }
 
@@ -59,7 +60,10 @@ struct Task {
         };
     }
 
-    void print(const auto& result) { std::cout << result.first << "\n" << result.second << "\n"; }
+    void print(const auto& result) {
+        std::cout << result.first << "\n";
+        std::cout << result.second << "\n";
+    }
 };
 
 int main() {
