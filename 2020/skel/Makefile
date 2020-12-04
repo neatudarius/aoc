@@ -2,7 +2,7 @@
 
 CC = g++
 CFLAGS = -std=c++2a -Wall -Wextra -O3 -I../skel
-LDFLAGS = -lm
+LDFLAGS = -lm -lfmt
 
 SRCS = $(sort $(wildcard *.cpp))
 TARGETS = $(patsubst %.cpp,%,$(SRCS))
