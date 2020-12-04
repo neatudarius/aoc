@@ -4,11 +4,6 @@ struct Task {
     int n;
     std::vector<int> v;
 
-    auto solve() {
-        read();
-        print(compute());
-    }
-
     void read() {
         // TODO: read from STDIN
         int x;
@@ -18,11 +13,11 @@ struct Task {
         }
     }
 
-    std::pair<uint64_t, uint64_t> compute() {
+    auto compute() {
         // TODO: computes results
-        return {
+        return std::pair{
             1ULL, // TODO: change me
-            1ULL, // TODO: change me
+            "22", // TODO: change me
         };
     }
 
@@ -30,6 +25,11 @@ struct Task {
         // TODO: print results to STDOUT
         std::cout << result.first << "\n";
         std::cout << result.second << "\n";
+    }
+
+    auto solve() {
+        read();
+        print(compute());
     }
 };
 
