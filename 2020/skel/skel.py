@@ -12,7 +12,7 @@ class Task:
         pass
 
     def print(self, result):
-        pass
+        print('{}\n{}\n'.format(result[0], result[1]))
 
     def solve(self):
         v = self.read()
