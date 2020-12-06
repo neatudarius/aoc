@@ -22,7 +22,7 @@ class Task:
             # "cid:" # optional
         ]
 
-        cnt_exit = sum(
+        cnt_exist = sum(
             map(lambda p: all(map(lambda r: match(p, r[0:3]), rs)),
                 ps))
 
@@ -30,7 +30,7 @@ class Task:
             map(lambda p: all(map(lambda r: match(p, '{}([ ]|$)'.format(r)), rs)),
                 ps))
 
-        return (cnt_exit, cnt_valid)
+        return (cnt_exist, cnt_valid)
 
     def print(self, result):
         print('{}\n{}\n'.format(result[0], result[1]))
