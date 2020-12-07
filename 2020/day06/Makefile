@@ -1,1 +1,1 @@
-../skel/Makefile
+../../skel/Makefile
