@@ -1,9 +1,6 @@
 #pragma once
 
-#include <bits/stdc++.h>
-#include <fmt/chrono.h>
-#include <fmt/ranges.h>
-
+#include "utils.hpp"
 #include "stream_redirect.h"
 
 template<typename Task>

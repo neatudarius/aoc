@@ -27,15 +27,14 @@ struct Task {
 
     auto compute() {
         std::vector<int> ids;
-        std::transform(
-            std::begin(tickets), std::end(tickets), std::back_inserter(ids), [&](const auto& t) { return get_id(t); });
+        std::ranges::transform(tickets, std::back_inserter(ids), [&](const auto& t) { return get_id(t); });
 
-        auto [min_ticket_id, max_ticket_id] = std::minmax_element(std::begin(ids), std::end(ids));
+        auto [min_ticket_id, max_ticket_id] = std::ranges::minmax_element(ids);
         auto max_id = *max_ticket_id;
 
         auto min = *min_ticket_id;
         auto max = *max_ticket_id;
-        auto sum = std::accumulate(std::begin(ids), std::end(ids), 0, std::plus<int>());
+        auto sum = std::ranges::accumulate(ids, 0, std::plus<int>());
         auto my_id = max * (max + 1) / 2 - (min - 1) * min / 2 - sum;
 
         return std::pair{

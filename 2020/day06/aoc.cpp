@@ -21,26 +21,24 @@ struct Task {
     }
 
     auto compute() {
-        auto cnt_any = std::accumulate(std::begin(forms), std::end(forms), 0, [](auto sum, const auto& form) {
+        auto cnt_any = std::ranges::accumulate(forms, 0, [](auto sum, const auto& form) {
             std::set<char> qs;
-            std::for_each(std::begin(form), std::end(form),
-                [&](const auto& line) { qs.insert(std::begin(line), std::end(line)); });
+            std::ranges::for_each(form, [&](const auto& line) { qs.insert(std::begin(line), std::end(line)); });
 
             return sum + qs.size();
         });
 
-        auto cnt_all = std::accumulate(std::begin(forms), std::end(forms), 0, [](auto sum, const auto& form) {
+        auto cnt_all = std::ranges::accumulate(forms, 0, [](auto sum, const auto& form) {
             std::set<char> qs;
             for (auto c = 'a'; c <= 'z'; ++c) {
                 qs.insert(c);
             }
 
-            std::for_each(std::begin(form), std::end(form), [&](const auto& line) {
+            std::ranges::for_each(form, [&](const auto& line) {
                 std::set<char> line_set{std::begin(line), std::end(line)};
 
                 std::set<char> i;
-                std::set_intersection(std::begin(qs), std::end(qs), std::begin(line_set), std::end(line_set),
-                    std::inserter(i, std::end(i)));
+                std::ranges::set_intersection(qs, line_set, std::inserter(i, std::end(i)));
 
                 qs = std::move(i);
             });

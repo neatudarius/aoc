@@ -28,7 +28,7 @@ struct Task {
             std::string password = "";
             ss >> lower >> c >> upper >> letter >> c >> password;
 
-            auto occ = std::count(password.begin(), password.end(), letter);
+            auto occ = std::ranges::count(password, letter);
             if (lower <= occ && occ <= upper) {
                 ++cnt_policy1;
             }
