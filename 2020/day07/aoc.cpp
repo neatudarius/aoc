@@ -56,15 +56,14 @@ struct Task {
         }
         visited[node] = 1;
 
-        return cache[node] = std::accumulate(
-                   std::begin(g[node]), std::end(g[node]), std::pair{1, 0}, [&](auto sum, const auto& neigbour) {
-                       auto [c, id] = neigbour;
-                       auto [c1, c2] = dfs(id, g, visited, cache);
-                       return std::pair{
-                           sum.first + c1,
-                           sum.second + c * (1 + c2),
-                       };
-                   });
+        return cache[node] = std::ranges::accumulate(g[node], std::pair{1, 0}, [&](auto sum, const auto& neigbour) {
+            auto [c, id] = neigbour;
+            auto [c1, c2] = dfs(id, g, visited, cache);
+            return std::pair{
+                sum.first + c1,
+                sum.second + c * (1 + c2),
+            };
+        });
     }
 
     auto compute() {

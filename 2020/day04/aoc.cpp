@@ -31,7 +31,7 @@ struct Task {
 
     auto is_valid(const auto& password) {
         static const auto each_char = [](const auto& str, auto num_chars, auto validator) {
-            return str.size() == (size_t)num_chars && std::all_of(std::begin(str), std::end(str), validator);
+            return str.size() == (size_t)num_chars && std::ranges::all_of(str, validator);
         };
 
         static const auto num_in_range = [](const auto& num_str, auto num_digits, auto lower, auto upper) {
@@ -103,7 +103,7 @@ struct Task {
                 // custom set of values
                 [](const auto& value) {
                     static const auto values = std::array{"amb", "blu", "brn", "gry", "grn", "hzl", "oth"};
-                    return std::find(values.begin(), values.end(), value) != values.end();
+                    return std::ranges::find(values, value) != values.end();
                 },
             },
             {
@@ -133,15 +133,14 @@ struct Task {
             field2value[key] = value.data();
         }
 
-        bool exist_values = std::all_of(std::begin(field2value), std::end(field2value), [](const auto& p) {
+        bool exist_values = std::ranges::all_of(field2value, [](const auto& p) {
             const auto& [_, value] = p;
             return value.has_value(); // field has value
         });
-        bool valid_values
-            = exist_values && std::all_of(std::begin(field2validator), std::end(field2validator), [&](const auto& p) {
-                  const auto& [key, validator] = p;
-                  return validator(field2value[key].value()); // field has valid value
-              });
+        bool valid_values = exist_values && std::ranges::all_of(field2validator, [&](const auto& p) {
+            const auto& [key, validator] = p;
+            return validator(field2value[key].value()); // field has valid value
+        });
 
         return std::pair{exist_values, valid_values};
     }

@@ -1,7 +1,7 @@
 # Copyright 2020 Darius Neatu (neatudarius@gmail.com)
 
 CC = g++
-CFLAGS = -std=c++2a -Wall -Wextra -O3 -I../skel
+CFLAGS = -std=c++20 -Wall -Wextra -O3 -I../skel
 LDFLAGS = -lm -lfmt
 
 SRCS = $(sort $(wildcard *.cpp))
