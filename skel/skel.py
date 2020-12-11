@@ -4,9 +4,7 @@ import sys
 
 class Task:
     def read(self, file='in'):
-        with open(file, 'r') as f:
-            v = [int(line) for line in f.readlines()]
-        return v
+        return [p.strip() for p in open(file).read().split('\n\n')]
 
     def compute(self, v):
         pass
